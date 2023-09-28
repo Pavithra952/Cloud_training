@@ -1,11 +1,11 @@
 # Use an official Python runtime as a parent image
 FROM python:3.8-slim
-ENV FLASK_APP Restapi_flask.py
+ENV FLASK_APP Exercise1/Restapi_flask.py
 # Set the working directory to /app
 WORKDIR /app
 
 # Copy the current directory contents into the container at /app
-COPY Restapi_flask.py /app
+COPY Exercise1/Restapi_flask.py /app
 
 # Make port 5000 available to the world outside this container
 RUN pip install Flask
