@@ -1,0 +1,8 @@
+all:
+  children:
+    my_group:
+      hosts:
+        host1:
+          ansible_host: 13.210.215.245
+          ansible_user: ubuntu
+          ansible_ssh_private_key_file: /home/user/terraform/ansiblekey
