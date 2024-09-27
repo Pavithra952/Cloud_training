@@ -1,0 +1,4 @@
+for file in ~/bash_scripts/*
+do
+   echo "Processing $my_file.sh"
+done
