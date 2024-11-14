@@ -2,41 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Replace the URL with your repository URL
+                git 'https://github.com/your-username/your-repo.git'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building...'
-                // Add your build commands here, e.g., Maven or Gradle
-                // sh 'mvn clean install'
+                // Build commands go here
             }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                // Add your test commands here
-                // sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Add your deployment commands here
-                // sh 'scp target/myapp.jar user@server:/path/to/deploy/'
-            }
-        }
-    }
-
-    post {
-        always {
-            echo 'Cleaning up...'
-            // Perform any cleanup tasks here
-        }
-        success {
-            echo 'Build was successful!'
-        }
-        failure {
-            echo 'Build failed!'
         }
     }
 }
