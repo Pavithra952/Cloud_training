@@ -1,98 +1,42 @@
 pipeline {
     agent any
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                // Pull code from the repository
-                git branch: 'main', url: pipeline {
-    agent any
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                // Pull code from the repository
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
-            }
-        }
-        
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-                // Add build commands here, e.g., for a Java project:
-                // sh 'mvn clean install'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Run tests, e.g., for Python tests:
-                // sh 'pytest tests/'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                // Add deployment commands here, like deploying to a server
-                // sh 'scp target/your-app.jar user@server:/path/to/deploy'
-            }
-        }
-    }
-    
-    post {
-        always {
-            echo 'Cleaning up workspace...'
-            deleteDir() // Deletes the workspace after build completion
-        }
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed.'
-        }
-    }
-}
 
-            }
-        }
-        
+    stages {
         stage('Build') {
             steps {
-                echo 'Building the application...'
-                // Add build commands here, e.g., for a Java project:
+                echo 'Building...'
+                // Add your build commands here, e.g., Maven or Gradle
                 // sh 'mvn clean install'
             }
         }
-        
+
         stage('Test') {
             steps {
-                echo 'Running tests...'
-                // Run tests, e.g., for Python tests:
-                // sh 'pytest tests/'
+                echo 'Testing...'
+                // Add your test commands here
+                // sh 'mvn test'
             }
         }
-        
+
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
-                // Add deployment commands here, like deploying to a server
-                // sh 'scp target/your-app.jar user@server:/path/to/deploy'
+                echo 'Deploying...'
+                // Add your deployment commands here
+                // sh 'scp target/myapp.jar user@server:/path/to/deploy/'
             }
         }
     }
-    
+
     post {
         always {
-            echo 'Cleaning up workspace...'
-            deleteDir() // Deletes the workspace after build completion
+            echo 'Cleaning up...'
+            // Perform any cleanup tasks here
         }
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Build was successful!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Build failed!'
         }
     }
 }
