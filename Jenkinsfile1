@@ -5,7 +5,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Replace the URL with your repository URL
-                git 'https://github.com/Pavithra952/Cloud_training.git'
+                git credentialsId: 'your-credential-id', url: 'https://github.com/Pavithra952/Cloud_training.git'
+
             }
         }
         stage('Build') {
